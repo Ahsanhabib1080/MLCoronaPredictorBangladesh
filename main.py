@@ -37,24 +37,25 @@ y0 = model.predict(x)
 
 #### PREDICTION ####
 
-#----PRINTING----
+# ----PRINTING----
 print('-' * 10);
 print('PREDICTING DATA');
 print('-' * 10)
 print('-' * 10);
-print("DATASET AVAILABLE TILL APRILL 5'th");
+print("DATASET AVAILABLE TILL August 5'th \nTotal 516 Days of Data Available");
 print('-' * 10)
-#--------------
-
-days = 1+int(input("How many days after you want to predict ? :")) # added 1+ for better Accurate Predictions
-print(f'Prediction - Total Cases after {399 + days-1} days:', end='')
-print(round(int(model.predict(polyfeature.fit_transform([[399 + days]]))), 2))
-x1 = np.array(list(range(1, 399 + days))).reshape(-1, 1)
+# ----PRINTING----
+days =  int(input("How many days after you want to predict ? :"))  # added 1+ for better Accurate Predictions
+print(f'Prediction - Total Cases after {516 + days} days:', end='')
+print(round(int(model.predict(polyfeature.fit_transform([[516 + days]]))), 2),'Total Cases')
+# x1 is creating a list of total cases range and reshape it.
+x1 = np.array(list(range(1, 516 + days))).reshape(-1, 1)
+# y1 is predicting and saving the data according to x1.
 y1 = model.predict(polyfeature.fit_transform(x1))
+# ploting the data to the graph.
 plt.plot(y1, 'c')
 plt.plot(y0, '--b')
-
 plt.xlabel('Days')
 plt.ylabel('Total Cases')
-plt.title(f'Predicting Bangladesh CoronaVirus Total Cases after {399 + (days-1)} days')
+plt.title(f'Predicting Bangladesh CoronaVirus Total Cases after {516 + (days)} days')
 plt.show()
